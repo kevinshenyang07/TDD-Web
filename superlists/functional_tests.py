@@ -26,8 +26,6 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do', header_text)
-        # fails the test anyway
-        # self.fail('Finish the test!')
 
         # The user is invited to enter a to-do item straight away
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -49,7 +47,7 @@ class NewVisitorTest(unittest.TestCase):
         # There is still a text box inviting the user to add another item. The user
         # enters "Use peacock feathers to make a fly"
         inputbox = self.browser.find_element_by_id('id_new_item')
-        inputbox.send_keys('Use peacock feathers to make a fly')
+        inputbox.send_keys('2: Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 

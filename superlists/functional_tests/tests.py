@@ -4,10 +4,11 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
 
+MAX_WAIT = 10
+
 
 class NewVisitorTest(LiveServerTestCase):
 
-    MAX_WAIT = 10
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -24,7 +25,6 @@ class NewVisitorTest(LiveServerTestCase):
                 self.assertIn(row_text, [row.text for row in rows])
                 return
             except (AssertionError, WebDriverException) as e:
-                # invalid MAX_WAIT here, read chapter 6
                 if time.time() - start_time > MAX_WAIT:
                     raise e
                 time.sleep(0.5)
@@ -53,7 +53,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
         # when ENTER is hit, the page will refresh, thus the explicit wait
         time.sleep(1)
-        self.check_for_row_in_list_table('1: Buy peacock feathers')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # There is still a text box inviting the user to add another item. The user
         # enters "Use peacock feathers to make a fly"
@@ -63,8 +63,8 @@ class NewVisitorTest(LiveServerTestCase):
         time.sleep(1)
 
         # The page updates again, and now shows both items on the user's list
-        self.check_for_row_in_list_table('1: Buy peacock feathers')
-        self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
+        self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
 
         # Edith wonders whether the site will remember the uers's list. Then the user sees
         # that the site has generated a unique URL for her -- there is some

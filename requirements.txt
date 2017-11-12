@@ -1,7 +1,5 @@
 alabaster==0.7.8
 alembic==0.8.6
-anaconda-client==1.4.0
-anaconda-navigator==1.2.1
 appdirs==1.4.3
 appnope==0.1.0
 appscript==1.0.1
@@ -16,8 +14,6 @@ backports-abc==0.4
 backports.functools-lru-cache==1.4
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.4.0.2
-beautifulsoup4==4.4.1
-binaryornot==0.4.3
 bitarray==0.8.1
 bokeh==0.11.1
 boto==2.40.0
